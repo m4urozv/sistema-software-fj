@@ -3,9 +3,8 @@ from datetime import datetime
 import logging
 import os
 
-# ==========================================
+
 # CONFIGURACIÓN DEL SISTEMA DE LOGS
-# ==========================================
 LOG_FILENAME = "sistema_software_fj.log"
 
 logging.basicConfig(
@@ -15,9 +14,9 @@ logging.basicConfig(
 )
 
 
-# ==========================================
+
 # EXCEPCIONES PERSONALIZADAS
-# ==========================================
+
 class SoftwareFJError(Exception):
     """Excepción base para todos los errores del sistema Software FJ."""
 
@@ -42,9 +41,8 @@ class InvalidReservationError(SoftwareFJError):
     pass
 
 
-# ==========================================
+
 # CLASE ABSTRACTA BASE (ENTIDAD GENERAL)
-# ==========================================
 class EntidadBase(ABC):
 
     def __init__(self, identificador: str):
@@ -59,9 +57,9 @@ class EntidadBase(ABC):
         pass
 
 
-# ==========================================
+
 # CLASE CLIENTE
-# ==========================================
+
 class Cliente(EntidadBase):
 
     def __init__(
@@ -110,9 +108,9 @@ class Cliente(EntidadBase):
         return f"Cliente [ID: {self.identificador}] - Nombre: {self.nombre}, Correo: {self.correo}, Teléfono: {self.telefono}"
 
 
-# ==========================================
+
 # CLASE ABSTRACTA SERVICIO
-# ==========================================
+
 class Servicio(ABC):
 
     def __init__(self, codigo: str, nombre: str, costo_base: float):
@@ -147,9 +145,9 @@ class Servicio(ABC):
         pass
 
 
-# ==========================================
+
 # SERVICIOS ESPECIALIZADOS
-# ==========================================
+
 class ReservaSalas(Servicio):
 
     def __init__(
@@ -281,9 +279,8 @@ class AsesoriaEspecializada(Servicio):
         return f"Asesoría Especializada [Código: {self.codigo}] - {self.nombre} | Área: {self.area_experticia} | Costo Base/sesión: ${self.costo_base}"
 
 
-# ==========================================
+
 # CLASE RESERVA
-# ==========================================
 class Reserva:
 
     contador_reservas = 1000
@@ -377,7 +374,7 @@ class Reserva:
             raise
 
 
-# ==========================================
+
 # SIMULACIÓN DE 10 OPERACIONES COMPLETAS
 # ==========================================
 def ejecutar_simulacion():
